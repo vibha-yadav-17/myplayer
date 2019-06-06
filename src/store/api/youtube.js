@@ -1,5 +1,5 @@
 function fetchVideos( store, videoType){
-    fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAvJms41k9fXLJnuiVUIffDlVrNIDmQK2U&part=snippet&chart=mostPopular")
+    fetch("https://www.googleapis.com/youtube/v3/videos?key=part=snippet&chart=mostPopular")
         .then(function(data){
             return data.json();
         })
