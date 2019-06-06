@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import MYTUBE_CONFIG from "../../config.js";
 
 function fetchVideos(store, action) {
@@ -28,6 +29,11 @@ function fetchVideos(store, action) {
 
         fetch(url)
         .then(function(data) {
+=======
+function fetchVideos( store, videoType){
+    fetch("https://www.googleapis.com/youtube/v3/videos?key=part=snippet&chart=mostPopular")
+        .then(function(data){
+>>>>>>> 4967f19ba3abe91a549326fe1bcc4296dd42700a
             return data.json();
         })
 
@@ -45,5 +51,9 @@ function fetchVideos(store, action) {
     }
 }
 
+<<<<<<< HEAD
 
 export {fetchVideos};
+=======
+export{fetchVideos}; 
+>>>>>>> 4967f19ba3abe91a549326fe1bcc4296dd42700a
