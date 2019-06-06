@@ -51,9 +51,6 @@ function fetchVideos( store, videoType){
     }
 }
 
-<<<<<<< HEAD
+
 
 export {fetchVideos};
-=======
-export{fetchVideos}; 
->>>>>>> 4967f19ba3abe91a549326fe1bcc4296dd42700a
