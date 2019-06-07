@@ -6,7 +6,7 @@ class Menu extends React.Component{
         return(
             <div>
                 <h2>My Tube</h2>
-                <h5>Rythm for Everyone</h5>
+                <h5>Rhythm for Everyone</h5>
                 <hr/>
 
                 <ul className="list-group">
