@@ -33,6 +33,14 @@ class SearchComponent extends React.Component {
             type: "CLEAR_VIDEOS"
         })
     }
+
+    componentWillUnmount(){
+        this.props.dispatch({
+            type: "CLEAR_VIDEOS",
+
+        });
+    }
+        
     render() {
         return (
             <div>
@@ -43,7 +51,7 @@ class SearchComponent extends React.Component {
                         <input type="text" onChange={this.inputChanged} className="form-control form-control-lg" />
                     </div>
 
-                    <button className="btn btn-info btn-lg" onClick={this.buttonClicked}>Search</button>
+                    <button className="btn btn-dark btn-lg" onClick={this.buttonClicked}>Search</button>
                 </div>
                 <Videos />
             </div>
