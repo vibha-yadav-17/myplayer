@@ -46,11 +46,5 @@ function fetchVideos(store, action) {
     }
 }
 
-<<<<<<< HEAD
 
 export { fetchVideos };
-=======
-
-
-export {fetchVideos};
->>>>>>> 696cb8f0785d39f8d6feaab2486d47389a06c905

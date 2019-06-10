@@ -6,11 +6,7 @@ class Menu extends React.Component{
         return(
             <div>
                 <h2>My Tube</h2>
-<<<<<<< HEAD
                 <h5></h5>
-=======
-                <h5>Rhythm for Everyone</h5>
->>>>>>> 696cb8f0785d39f8d6feaab2486d47389a06c905
                 <hr/>
 
                 <ul className="list-group">
