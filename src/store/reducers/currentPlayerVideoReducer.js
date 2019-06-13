@@ -1,22 +1,19 @@
 import { fetchOneVideo } from "../api/youtube.js";
 import { store } from "../store";
 
-function currentPlayerVideo(currentVideoData = {}, action) {
-  if (action.type === "FETCH_VIDEO_DATA") {
-    fetchOneVideo(store, action);
-  }
-  if (action.type === "CLEAR_VIDEO_DATA") {
-    return {};
-  }
+function currentPlayerVideoReducer(currentPlayerVideo = {}, action) {
 
-  if (action.type === "VIDEOS_DATA_LOADED") 
-  {
-    let newState = action.videoData;
+    if (action.type === "FETCH_VIDEO_DATA") {
+        fetchOneVideo(store, action);
+    }
+      if(action.type === "VIDEO_DATA_LOADED"){
+
+        
+        return action.videoData; 
+    }
     
-    newState.snippet.showDescription = action.videoData.snippet.description.slice(0,400);
-    return newState;
-  }
-  return currentVideoData;
+
+    return currentPlayerVideo;
 }
 
-export default currentPlayerVideo;
+export default currentPlayerVideoReducer;

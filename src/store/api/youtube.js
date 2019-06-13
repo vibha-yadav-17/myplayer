@@ -2,11 +2,10 @@ import MYTUBE_CONFIG from "../../config.js";
 
 function fetchVideos(store, action) {
   if (action.videoType === "trending") {
+    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY
+  }&chart=mostPopular&maxResults=30`
  
-    fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY
-      }&chart=mostPopular&maxResults=30`
-    )
+    fetch(url)
         .then(function(data) {
             return data.json();
         })
@@ -47,7 +46,7 @@ function fetchVideos(store, action) {
 }
 
 function fetchOneVideo(store, action) {
-    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${
+    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${
       action.videoId
     }&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY}`;
     fetch(url)
