@@ -51,7 +51,10 @@ class SearchComponent extends React.Component {
                         <input type="text" onChange={this.inputChanged} className="form-control form-control-lg" />
                     </div>
 
-                    <button className="btn btn-dark btn-lg" onClick={this.buttonClicked}>Search</button>
+                    <button className="btn btn-dark btn-lg" onClick={this.buttonClicked}>
+                        
+                    <span className="oi oi-magnifying-glass " />Search</button>
+                    <br/>
                 </div>
                 <Videos />
             </div>

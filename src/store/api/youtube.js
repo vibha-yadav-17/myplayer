@@ -2,7 +2,7 @@ import MYTUBE_CONFIG from "../../config.js";
 
 function fetchVideos(store, action) {
   if (action.videoType === "trending") {
-      console.log("TRENDdddddING ")
+ 
     fetch(
       `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY
       }&chart=mostPopular&maxResults=30`
@@ -46,5 +46,47 @@ function fetchVideos(store, action) {
     }
 }
 
+function fetchOneVideo(store, action) {
+    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${
+      action.videoId
+    }&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY}`;
+    fetch(url)
+      .then(function(data) {
+        return data.json();
+      })
+      .then(function(response) {
+        store.dispatch({
+          type: "VIDEOS_DATA_LOADED",
+          videoData: response.items[0]
+        });
+      })
+      .catch(function(err) {
+        console.log("fetch error ==>", err);
+      });
+  }
+  
+  function fetchComments(store, action) {
+    let url = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${
+      action.videoId
+    }&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY}`;
+    fetch(url)
+      .then(function(data) {
+        return data.json();
+      })
+      .then(function(response) {
+        store.dispatch({
+          type: "COMMENTS_LOADED",
+          comments: response.items
+        });
+      })
+      .catch(function(err) {
+        console.log("fetch error ==>",err);
+      });
+  }
+  
+  export { fetchVideos, fetchOneVideo, fetchComments };
+  
+  
 
-export { fetchVideos };
+
+

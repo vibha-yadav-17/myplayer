@@ -23,9 +23,10 @@ class App extends React.Component{
                         </div>
                         
                         <div className="col-md-9">
-                            <Route path="/ " exact= {true} component={Trending} />
+                    <Route path="/" exact= {true} component={Trending} />
                             <Route path="/search"  component={Search} />
-                            <Route path="/Player"  component={VideoPlayer} />
+                            
+                            <Route path="/player/:videoId"  component={VideoPlayer} />
                             
                         
 
