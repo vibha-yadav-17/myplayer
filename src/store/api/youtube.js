@@ -2,10 +2,11 @@ import MYTUBE_CONFIG from "../../config.js";
 
 function fetchVideos(store, action) {
   if (action.videoType === "trending") {
-    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY
-  }&chart=mostPopular&maxResults=30`
- 
-    fetch(url)
+      
+    fetch(
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY
+      }&chart=mostPopular&maxResults=30`
+    )
         .then(function(data) {
             return data.json();
         })
@@ -46,7 +47,7 @@ function fetchVideos(store, action) {
 }
 
 function fetchOneVideo(store, action) {
-    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${
+    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${
       action.videoId
     }&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY}`;
     fetch(url)
@@ -55,7 +56,7 @@ function fetchOneVideo(store, action) {
       })
       .then(function(response) {
         store.dispatch({
-          type: "VIDEOS_DATA_LOADED",
+          type: "VIDEO_DATA_LOADED",
           videoData: response.items[0]
         });
       })
@@ -63,12 +64,26 @@ function fetchOneVideo(store, action) {
         console.log("fetch error ==>", err);
       });
   }
-  
-  
-  
-  export { fetchVideos, fetchOneVideo };
-  
-  
+
+  function fetchVideoComments(store, action) {
+    let url = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${
+      action.videoId}&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY}`;
+      console.log(url)
+    fetch(url)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+      
+        store.dispatch({
+          type: "VIDEO_COMMENTS_LOADED",
+          comments: data.items,
+        })
+      })
+      .catch(function(err) {
+        console.log("fetch error ==>", err);
+      });
+  }
 
 
-
+export { fetchVideos, fetchOneVideo, fetchVideoComments};
