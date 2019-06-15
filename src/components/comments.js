@@ -13,6 +13,7 @@ class CommentsComponent extends React.Component{
         return(
            this.props.currentVideoComments.map( c => {
                return <p key={c.id}>
+                   <img src={c.snippet.topLevelComment.snippet.authorProfileImageUrl} />
                    <strong>  {c.snippet.topLevelComment.snippet.authorDisplayName} says:</strong>
                    <br/>
                    {c.snippet.topLevelComment.snippet.textOriginal}</p>;
