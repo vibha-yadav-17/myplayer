@@ -5,8 +5,10 @@ class Menu extends React.Component{
     render(){
         return(
             <div>
-                <h2>My Tube</h2>
-                <h5></h5>
+                <h2 className="text-danger">My Tube
+                <span className="oi oi-play-circle"></span>
+                </h2>
+                
                 <hr/>
 
                 <ul className="list-group">
@@ -16,10 +18,10 @@ class Menu extends React.Component{
                         <Link to="/"></Link>Menu</li>
                     <li className="list-group-item list-group-item-dark"> 
                     
-                    <Link to="/">Trending</Link></li>
+                    <Link to="/app">Trending</Link></li>
 
                     <li className="list-group-item list-group-item-dark">
-                         <Link to="/search">Search</Link></li>
+                         <Link to="/app/search">Search</Link></li>
                     <li className="list-group-item list-group-item-dark">Watch later</li>
                     <li className="list-group-item list-group-item-dark">Liked Videos</li>
                    
