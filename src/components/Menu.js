@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 class Menu extends React.Component{
     render(){
@@ -22,8 +23,10 @@ class Menu extends React.Component{
 
                     <li className="list-group-item list-group-item-dark">
                          <Link to="/app/search">Search</Link></li>
-                    <li className="list-group-item list-group-item-dark">Watch later</li>
-                    <li className="list-group-item list-group-item-dark">Liked Videos</li>
+                    <li className="list-group-item list-group-item-dark"> 
+                    <Link to="/app/profile">Profile</Link></li>
+                    <li className="list-group-item list-group-item-dark"> 
+                    <Link to="/app/logout">Logout</Link></li>
                    
                 </ul>
 

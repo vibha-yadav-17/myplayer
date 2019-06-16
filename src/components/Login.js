@@ -4,6 +4,10 @@ import {GoogleLogin} from 'react-google-login';
 
 
 class Login extends React.Component{
+    constructor(props) {
+        super(props);
+        this.googleCallback = this.googleCallback.bind(this);
+    }
 
     googleCallback(response){
         if(!response || !response.accessToken){
@@ -16,6 +20,9 @@ class Login extends React.Component{
         };
 
         localStorage.setItem("user" , JSON.stringify(user)); 
+
+        {/*window.location.href = "/";*/}
+        this.props.history.push("/app");
     }
 
   
@@ -27,8 +34,7 @@ class Login extends React.Component{
                         <h2 className="text-danger">Login using Google</h2>
                         <hr/>
                         <GoogleLogin 
-                            clientId="646131656182-hklrnim2fdlv6sit5k5gk9hrpqrghn6g.
-                            apps.googleusercontent.com"
+                            clientId="646131656182-hklrnim2fdlv6sit5k5gk9hrpqrghn6g.apps.googleusercontent.com"
                             onSuccess={this.googleCallback}
                             onFailure ={this.googleCallback}
                             buttonText="Login"
