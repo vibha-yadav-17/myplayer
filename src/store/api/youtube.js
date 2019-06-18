@@ -1,5 +1,15 @@
 import MYTUBE_CONFIG from "../../config.js";
 
+function getUserToken(){
+  let user = localStorage.getItem("user");
+
+  if(!user){
+    return null;
+  }
+  user = JSON.parse(user);
+  return user.token;
+}
+
 function fetchVideos(store, action) {
   if (action.videoType === "trending") {
       
@@ -85,5 +95,32 @@ function fetchOneVideo(store, action) {
       });
   }
 
+  function fetchPlaylists(store, action) {
+    let url = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true&maxResults=20";
+    let token = getUserToken();
+    if(!token){
+      return store;
+    }
+    fetch(url, {
+      "headers": {
+        "Authorization" : `Bearer ${getUserToken()}`
+      }
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+      
+        store.dispatch({
+          type: "PLAYLISTS_LOADED",
+          playlists: [data.items],
+        })
+      })
 
-export { fetchVideos, fetchOneVideo, fetchVideoComments};
+      .catch(function(err) {
+        console.log("fetch error ==>", err);
+      });
+  }
+
+
+export { fetchVideos, fetchOneVideo, fetchVideoComments, fetchPlaylists};

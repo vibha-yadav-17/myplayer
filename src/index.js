@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css';
+
 import{BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 import App from './components/App.js';
