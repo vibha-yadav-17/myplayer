@@ -117,7 +117,7 @@ let newFormState = this.state.formState;
                             </textarea>
                         </label>
                     </div>
-                    <button type="submit" className="btn-btn-info">Create Playlist</button>
+                    <button type="submit" className="btn btn-info">Create Playlist</button>
                 </form>
             </div>
         );

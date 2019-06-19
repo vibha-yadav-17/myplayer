@@ -96,14 +96,16 @@ function fetchOneVideo(store, action) {
   }
 
   function fetchPlaylists(store, action) {
-    let url = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true&maxResults=20";
+    let url = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true&maxResults=20`;
     let token = getUserToken();
     if(!token){
       return store;
-    }
+
+    } 
+    console.log(token);
     fetch(url, {
       "headers": {
-        "Authorization" : `Bearer ${getUserToken()}`
+        "Authorization" : `Bearer ${token}`
       }
     })
       .then(function(response) {

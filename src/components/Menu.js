@@ -8,7 +8,7 @@ class MenuComponent extends React.Component{
 
     componentDidMount(){
         this.props.dispatch({
-            type: "FETCH_PLAYLISTS"
+            type: "FETCH_PLAYLIST"
         });
     }
     render(){
